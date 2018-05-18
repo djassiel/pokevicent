@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
     </div>
     <div className="footer-copyright py-3 text-center">
-		Hecho con 💓 por <strong>David Vicent</strong>
+		Hecho con <span role="img" aria-label="">💓</span> por <strong>David Vicent</strong>
     </div>
 
 </footer>
