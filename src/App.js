@@ -13,11 +13,10 @@ class App extends Component {
 			loading: false,
 			pokemon: [],
 			url: 'https://pokeapi.co/api/v2/pokemon/',
-			imgPokemon: ''
 		}
 	}
 
-	componentWillMount() {
+	componentDidMount() {
 		this.getPokemon();
 	}
 	getPokemon = () => {
@@ -34,6 +33,19 @@ class App extends Component {
 		})
   	.catch(error => { console.log('Request failed', error) })
 	}
+
+	loadMore = () => {
+	    fetch(this.state.url)
+		.then(res => res.json())
+		.then( res => {
+			this.setState({
+				pokemon: [...this.state.pokemon, ...res.results],
+				url: res.next,
+				loading: false
+			})
+		})
+  	.catch(error => { console.log('Request failed', error) })
+  }
 
 	render() {
 		if (this.state.loading) {
@@ -52,8 +64,9 @@ class App extends Component {
 							this.state.pokemon.map((item, index) => (
 								<Card name={item.name} key={index}/>
 							))}
+						<br/>
+					<button className="btn btn-red" onClick={this.loadMore}>Ver mas</button>
 					</div>
-					<p>Proximamente paginacion de pokemones!</p>
 					<Footer />
 				</div>
 			)
