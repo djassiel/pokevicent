@@ -5,7 +5,7 @@ import Footer from './components/footer/Footer'
 import './App.css';
 
 class App extends Component {
-		
+
 	constructor(props) {
 		super(props)
 
@@ -35,28 +35,36 @@ class App extends Component {
   	.catch(error => { console.log('Request failed', error) })
 	}
 
-	render() {
-		if (this.state.loading) {
-			return (
-				<div>
-					Descargando
-				</div>
-			);
-		} 
-		return(
+	handleLoad = () => {
+		this.setState({ loading: true }, () => {
+			fetch(this.state.url)
+					.then(res => res.json())
+					.then( res => {
+						this.setState({
+							pokemon: this.state.pokemon.concat(res.results),
+							url: res.next,
+							loading: false
+						})
+					})
+			  	.catch(error => { console.log('Request failed', error) })
+		});
+	}
 
-				<div>
-					<div className="container">
-						<Navbar />
-						{
-							this.state.pokemon.map((item, index) => (
-								<Card name={item.name} key={index}/>
-							))}
-					</div>
-					<p>Proximamente paginacion de pokemones!</p>
-					<Footer />
+	render() {
+		return(
+			<div>
+				<div className="container">
+					<Navbar />
+					{
+						this.state.pokemon.map((item, index) => (
+							<Card name={item.name} key={index}/>
+						))}
 				</div>
-			)
+				<button onClick={this.handleLoad}>More pokemons</button>
+				{this.state.loading && <p style={{ fontSize: 60 }}>Loading...</p>}
+				<Footer />
+			</div>
+		);
 	}
 }
 
