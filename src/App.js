@@ -1,21 +1,23 @@
 import React, { Component } from 'react'
-import Navbar from './components/nav/Navbar'
-import Card from './components/Card'
-import Footer from './components/footer/Footer'
+import HomeLayout from './components/pages/homeLayout'
+import ModalContainer from './components/widget/container/modal'
+import Modal from './components/widget/components/modal'
+import Card from './components/card/Card'
+import MoreInfoPokemon from './components/moreInfo/containers/moreInfo'
 import './App.css'
 
 class App extends Component {
-		
-	constructor(props) {
-		super(props)
-
+	constructor() {
+		super()
 		this.state = {
 			loading: false,
 			pokemon: [],
 			url: 'https://pokeapi.co/api/v2/pokemon/',
+			modalVisible: false
 		}
-
 		this.loadMore = this.loadMore.bind(this)
+		this.handleCloseModalClick = this.handleCloseModalClick.bind(this)
+		this.handleOpenModal = this.handleOpenModal.bind(this)
 	}
 
 	componentDidMount() {
@@ -30,10 +32,10 @@ class App extends Component {
 			this.setState({
 				pokemon: res.results,
 				url: res.next,
-				loading: false
+				loading: false,
 			})
 		})
-  	.catch(error => { console.log('Request failed', error) })
+  		.catch(error => { console.log('Request failed', error) })
 	}
 
 	loadMore() {
@@ -59,28 +61,42 @@ class App extends Component {
   		} else {
   			return(
 				this.state.pokemon.map((item, index) => (
-					<div className="col-12 col-md-4">
-						<Card name={item.name} key={index} />
+					<div className="col-12 col-md-4" key={index}>
+						<Card name={item.name} urlPokemon={item.url} openModal={this.handleOpenModal}/>
 					</div>
 				))
   			)
   		}
   	}
 
+  	handleCloseModalClick(event) {
+  		this.setState({
+  			modalVisible: false
+  		})
+  	}
+
+  	handleOpenModal(data) {
+  		this.setState({
+  			modalVisible: true,
+  			data: data
+  		})
+
+
+
+  	}
+
 	render() {
 		return(
-
-				<div>
-					<div className="container">
-						<div className="row">
-							<Navbar />
-								{this.renderView()}
-							<br/>
-						</div>
-						<button className="btn btn-red" onClick={this.loadMore}>Ver mas</button>
-					</div>
-					<Footer />
-				</div>
+			<HomeLayout loadMore={this.loadMore}>
+				{this.renderView()}
+				{this.state.modalVisible &&
+				<ModalContainer>
+					<Modal handleClick={this.handleCloseModalClick} show={this.state.modalVisible}>
+						<MoreInfoPokemon name={this.state.data.name} urlPokemon={this.state.data.urlPokemon}/>
+					</Modal>
+				</ModalContainer>
+				}
+			</HomeLayout>
 			)
 	}
 }

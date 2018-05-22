@@ -1,0 +1,40 @@
+/*.pokemonInfo {
+	border-style: solid;
+	border-width: 15px;
+	border-bottom-width: 100px;
+	border-color: #FF530D;
+
+}
+
+.pokemonHabilidades {
+	border-style: solid;
+	border-width: 15px;
+	border-bottom-width: 100px;
+	border-color: #E82C0C;
+}
+
+.listAbility {
+	color: white;
+	background: #FF530D;
+	}*/
+
+.pokemonInfo {
+	background: white;	
+	padding-top: 50px;
+	color: #2b2b2b;
+}
+
+.pokemonHabilidades {
+	margin-top: 50px;
+}
+
+.listAbility {
+	color: white;
+	background: #FF530D;
+	}
+
+.ImgPokemon {
+	border-color: white;
+	border-style: solid;
+	border-width: 15px;
+}
