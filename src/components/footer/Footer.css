@@ -1,9 +1,12 @@
-.redes {
-	margin-left: 100px;
-}
-
 .footer-copyright {
 	color: white !important;
-	padding-left: 50;
+}
 
+.footer {
+  position: absolute;
+  width: 100%;
+}
+
+.icon-network {
+	margin-left: 5%;
 }

@@ -3,11 +3,11 @@ import './Footer.css'
 
 const Footer = () => {
 	return (
-<footer className="page-footer font-small indigo pt-0">
+<footer className="page-footer font-small indigo pt-0 footer">
     <div className="container">
         <div className="row">
             <div className="col-md-12 py-5">
-                <div className="mb-5 flex-center redes">
+                <div className="mb-5 text-center icon-network">
                     <a className="fb-ic" href="https://www.facebook.com/djassiel26">
                         <i className="fa fa-facebook fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
                     </a>

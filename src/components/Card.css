@@ -1,10 +1,8 @@
 .card {
-	width: 20em !important;
-	margin-bottom: 25px;
-	margin-left: 25px;
+	width: 100% !important;
 	display: inline-block;
 	vertical-align: top;
-
+	margin-bottom: 25px;
 }
 
 .img-pokemon {
@@ -21,4 +19,5 @@
 .btn-pokemon {
 	background-color: #ff5959;
 	color: white;
+	padding-right: 10%;
 }
