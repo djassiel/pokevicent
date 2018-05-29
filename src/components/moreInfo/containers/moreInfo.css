@@ -19,22 +19,19 @@
 	}*/
 
 .pokemonInfo {
-	background: white;	
-	padding-top: 50px;
+	padding-top: 61px;
+	padding-bottom: 65px;
 	color: #2b2b2b;
 }
 
 .pokemonHabilidades {
-	margin-top: 50px;
+	padding: 25px;
+	background: linear-gradient(to left, #FF530D, #E82C0C);
+	color: white;
+	height: 370px;
 }
 
 .listAbility {
 	color: white;
 	background: #FF530D;
 	}
-
-.ImgPokemon {
-	border-color: white;
-	border-style: solid;
-	border-width: 15px;
-}

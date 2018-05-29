@@ -1,24 +1,32 @@
 .Modal {
   max-width: 768px;
-  width: 100%;
+  max-height: 1024;
+  width: 90%;
+  height: 370px;
   margin: 0 auto;
   position: fixed;
   left: 0;
   right: 0;
   top: 100px;
   background:  white;
-  border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,.4);
-  background: linear-gradient(to left, #FF530D, #E82C0C); 
-  color: white;
+  /* background: linear-gradient(to left, #FF530D, #E82C0C);  */
+  background: white;
+  color: black;
+}
+
+@media screen and (max-width: 768px) {
+  .Modal {
+    height: auto;
+  }
 }
 
 .Modal-close {
   width: 50px;
   height: 50px;
   position: absolute;
-  right: -25px;
-  top: -25px;
+  right: -35px;
+  top: -35px;
   border-radius: 50%;
   border: none;
   background: #171c30;
