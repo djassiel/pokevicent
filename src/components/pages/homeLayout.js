@@ -6,12 +6,9 @@ const HomeLayout = (props) => {
 	return(
 		<div>
 			<div className="container">
-				<div className="row">
-					<Navbar />
-						{props.children}
-					<br/>
-				</div>
-				<button className="btn btn-red" onClick={props.loadMore}>Ver mas</button>
+				<Navbar />
+					{props.children}
+				<br/>
 			</div>
 			<Footer />
 		</div>
